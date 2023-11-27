@@ -7,6 +7,7 @@
 declare(strict_types=1);
 
 namespace Examples {
+
 	class DependencyOfEmptyClass
 	{
 		public function __construct(

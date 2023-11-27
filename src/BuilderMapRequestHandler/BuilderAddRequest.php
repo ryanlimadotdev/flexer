@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Ryanl\MyDi\BuilderMapRequestHandler;
+namespace Flexer\BuilderMapRequestHandler;
 
-use Ryanl\MyDi\Builder;
+use Flexer\Builder;
 
-readonly class BuilderAddRequest
+final readonly class BuilderAddRequest
 {
-    private BuilderAddRequestType $type;
+	private BuilderAddRequestType $type;
 
     public function __construct(
         public string $id,
-        public mixed $definition = null,
+        public mixed $definition,
     ) {
         $this->setTypeForIndividualBuilder();
     }
@@ -21,7 +21,7 @@ readonly class BuilderAddRequest
         string $idOrCollection,
         mixed $definition = null,
     ): BuilderAddRequest {
-        return new static($idOrCollection, $definition);
+        return new BuilderAddRequest($idOrCollection, $definition);
     }
 
     private function setTypeForIndividualBuilder(): void

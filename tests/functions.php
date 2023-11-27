@@ -2,7 +2,10 @@
 
 declare(strict_types=1);
 
+use Examples\EmptyClass;
 use Examples\NormalClass;
+
+require_once __DIR__ . '/Examples.php';
 
 function currentLine(): int
 {
@@ -14,4 +17,9 @@ function currentLine(): int
 function getNormalClass(): NormalClass
 {
 	return new NormalClass('Ryan', 'Lima');
+}
+
+function emptyClassFactory(): EmptyClass
+{
+	return new EmptyClass();
 }

@@ -2,22 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Ryanl\MyDi\BuilderMapRequestHandler;
+namespace Flexer\BuilderMapRequestHandler;
 
-use Ryanl\MyDi\Builder;
+use Flexer\Builder;
 
 class BuilderMapRequestHandler extends AbstractBuilderMapRequestHandler
 {
-
     public function handle(BuilderAddRequest $request): Builder
     {
         if (!$request->isTypeBuilder()) {
             return parent::handle($request);
         }
-        /** @var Builder $definition  */
-        $definition = $request->definition;
 
-        return $definition;
+	    return $request->definition;
     }
 
     public function setNext(BuilderMapHandler $next): BuilderMapHandler

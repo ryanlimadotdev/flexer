@@ -2,21 +2,31 @@
 
 declare(strict_types=1);
 
-namespace Ryanl\MyDi;
+namespace Flexer;
 
+use Flexer\Exception\BuilderException as E;
 use ReflectionClass;
 use ReflectionException;
-use Ryanl\MyDi\Exception\BuilderException as E;
 
 class Builder
 {
+	/** @var array<string, mixed>*/
 	private array $propertiesToBind;
 	private object $instance;
 	private bool $isSingleton = false;
 
+	/**
+	 * @throws E
+	 */
 	public function __construct(
         private readonly mixed $builder,
     ) {
+		if (!\is_callable($this->builder)) {
+			throw new E(
+				E::TRYING_TO_ASSIGN_A_NON_CALLABLE_TO_BUILDER,
+				E::TRYING_TO_ASSIGN_A_NON_CALLABLE_TO_BUILDER_CODE
+			);
+		}
     }
 
 	/**
@@ -28,14 +38,17 @@ class Builder
 		if ($this->isSingleton and isset($this->instance)) {
             return $this->instance;
         }
-		var_dump(call_user_func($this->builder, ...$args));
         $this->instance = call_user_func($this->builder, ...$args);
 		if (isset($this->propertiesToBind)) {
             $this->resolveBind();
         }
         return $this->instance;
     }
-    public static function create(mixed $builder): self
+
+	/**
+	 * @throws E
+	 */
+	public static function create(mixed $builder): self
     {
         return new self($builder);
     }

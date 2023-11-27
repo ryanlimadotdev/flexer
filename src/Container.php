@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace Ryanl\MyDi;
+namespace Flexer;
 
+use Flexer\BuilderMapRequestHandler\BuilderAddRequest;
+use Flexer\BuilderMapRequestHandler\BuilderMapHandler;
+use Flexer\BuilderMapRequestHandler\BuilderMapRequestHandler;
+use Flexer\BuilderMapRequestHandler\CallableMapRequestHandler;
+use Flexer\BuilderMapRequestHandler\FunctionNameMapRequestHandler;
+use Flexer\BuilderMapRequestHandler\InstanceMapRequestHandler;
+use Flexer\BuilderMapRequestHandler\MethodCallArrayMapRequestHandler;
+use Flexer\Exception\BuilderContainerException;
+use Flexer\Exception\ContainerException as E;
+use Flexer\Exception\NotFoundException;
 use Psr\Container\ContainerInterface;
 use ReflectionClass;
 use ReflectionException;
 use ReflectionParameter;
-use Ryanl\MyDi\BuilderMapRequestHandler\BuilderMapHandler;
-use Ryanl\MyDi\BuilderMapRequestHandler\BuilderAddRequest;
-use Ryanl\MyDi\BuilderMapRequestHandler\BuilderMapRequestHandler;
-use Ryanl\MyDi\BuilderMapRequestHandler\CallableMapRequestHandler;
-use Ryanl\MyDi\BuilderMapRequestHandler\FunctionNameMapRequestHandler;
-use Ryanl\MyDi\BuilderMapRequestHandler\InstanceMapRequestHandler;
-use Ryanl\MyDi\BuilderMapRequestHandler\MethodCallArrayMapRequestHandler;
-use Ryanl\MyDi\Exception\BuilderContainerException;
-use Ryanl\MyDi\Exception\ContainerException as E;
-use Ryanl\MyDi\Exception\NotFoundException;
 
 /**
  * Implements the PSR11 that describe the behavior of

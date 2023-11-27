@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Ryanl\MyDi\BuilderMapRequestHandler;
+namespace Flexer\BuilderMapRequestHandler;
 
 enum BuilderAddRequestType
 {

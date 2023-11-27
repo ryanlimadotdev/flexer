@@ -2,17 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Ryanl\MyDi\BuilderMapRequestHandler;
+namespace Flexer\BuilderMapRequestHandler;
 
-use JetBrains\PhpStorm\Pure;
-use Ryanl\MyDi\Builder;
-use Ryanl\MyDi\Exception\BuildAddHandlerException;
+use Flexer\Builder;
+use Flexer\Exception\BuildAddHandlerException;
 
 abstract class AbstractBuilderMapRequestHandler implements BuilderMapHandler
 {
     protected BuilderMapHandler $next;
 
-    #[Pure] public static function create(): BuilderMapHandler
+	final public function __construct()
+	{
+    }
+
+	public static function create(): BuilderMapHandler
     {
         return new static();
     }

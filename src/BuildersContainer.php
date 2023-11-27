@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Ryanl\MyDi;
+namespace Flexer;
 
 use ArrayAccess;
 use ArrayIterator;
 use Exception;
+use Flexer\Exception\BuilderContainerException as E;
 use IteratorAggregate;
-use Ryanl\MyDi\Exception\BuilderContainerException as E;
 
 class BuildersContainer implements IteratorAggregate, ArrayAccess
 {

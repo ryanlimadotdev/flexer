@@ -1,6 +1,6 @@
 <?php
 
-namespace Ryanl\MyDi\Exception;
+namespace Flexer\Exception;
 
 use Psr\Container\NotFoundExceptionInterface;
 

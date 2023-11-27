@@ -2,13 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Ryanl\MyDi\BuilderMapRequestHandler;
+namespace Flexer\BuilderMapRequestHandler;
 
-use Ryanl\MyDi\Builder;
+use Flexer\Builder;
 
 class CallableMapRequestHandler extends AbstractBuilderMapRequestHandler
 {
-
     public function handle(BuilderAddRequest $request): Builder
     {
         if (!$request->isTypeCallable()) {

@@ -1,14 +1,15 @@
 {
-    "name": "ryanl/my-di",
-    "description": "PSR 11",
+    "name": "ryanl/flexer",
+    "description": "Flexer is a powerful PHP library that offers a versatile implementation of the PSR-11 Container interface. Designed to provide a seamless and standardized way to manage dependencies and services in your PHP applications, Flexer empowers developers with a flexible and intuitive container solution.",
     "type": "library",
     "require": {
+        "php": "^8.2",
         "psr/container": "^2.0"
     },
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Ryanl\\MyDi\\": "src/"
+            "Flexer\\": "src/"
         }
     },
     "authors": [
@@ -25,6 +26,7 @@
     },
     "scripts": {
         "test": "php ./vendor/bin/pest tests",
+        "coverage":  "php ./vendor/bin/pest --coverage",
         "analyse" : "vendor/bin/phpstan analyse -c phpstan.neon"
     },
     "config": {
