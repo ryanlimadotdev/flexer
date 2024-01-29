@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Flexer\BuilderMapRequestHandler;
+namespace Flexer\CreateBuilderRequestHandler;
 
 use Flexer\Builder;
 use Flexer\Exception\BuildAddHandlerException;
 
-abstract class AbstractBuilderMapRequestHandler implements BuilderMapHandler
+abstract class AbstractICreateBuilder implements ICreateBuilder
 {
-    protected BuilderMapHandler $next;
+    protected ICreateBuilder $next;
 
 	final public function __construct()
 	{
     }
 
-	public static function create(): BuilderMapHandler
+	public static function create(): ICreateBuilder
     {
         return new static();
     }
@@ -34,7 +34,7 @@ abstract class AbstractBuilderMapRequestHandler implements BuilderMapHandler
 		return $this->next->handle($request);
 	}
 
-    public function setNext(BuilderMapHandler $next): BuilderMapHandler
+    public function setNext(ICreateBuilder $next): ICreateBuilder
     {
         $this->next = $next;
         return $next;
