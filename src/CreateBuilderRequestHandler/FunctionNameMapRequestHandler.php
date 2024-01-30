@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Flexer\BuilderMapRequestHandler;
+namespace Flexer\CreateBuilderRequestHandler;
 
 use Flexer\Builder;
 use Flexer\Exception\BuildAddHandlerException;
 use Flexer\Exception\BuilderException;
 
-class FunctionNameMapRequestHandler extends AbstractBuilderMapRequestHandler
+class FunctionNameMapRequestHandler extends AbstractMapRequestHandler
 {
 	/**
 	 * @throws BuildAddHandlerException
 	 * @throws BuilderException
 	 */
-	public function handle(BuilderAddRequest $request): Builder
+	public function handle(MapRequest $request): Builder
     {
         if (!$request->isTypeFunctionName()) {
             return parent::handle($request);
@@ -27,7 +27,7 @@ class FunctionNameMapRequestHandler extends AbstractBuilderMapRequestHandler
         );
     }
 
-    public function setNext(BuilderMapHandler $next): BuilderMapHandler
+    public function setNext(ICreateBuilder $next): ICreateBuilder
     {
         $this->next = $next;
         return $next;

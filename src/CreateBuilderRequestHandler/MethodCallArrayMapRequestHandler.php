@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Flexer\BuilderMapRequestHandler;
+namespace Flexer\CreateBuilderRequestHandler;
 
 use Flexer\Builder;
 
-class MethodCallArrayMapRequestHandler extends AbstractBuilderMapRequestHandler
+class MethodCallArrayMapRequestHandler extends AbstractMapRequestHandler
 {
-    public function handle(BuilderAddRequest $request): Builder
+    public function handle(MapRequest $request): Builder
     {
         if (!$request->isTypeMethodCallArray()) {
             return parent::handle($request);
@@ -19,7 +19,7 @@ class MethodCallArrayMapRequestHandler extends AbstractBuilderMapRequestHandler
         );
     }
 
-    public function setNext(BuilderMapHandler $next): BuilderMapHandler
+    public function setNext(ICreateBuilder $next): ICreateBuilder
     {
         $this->next = $next;
         return $next;

@@ -6,7 +6,7 @@ namespace Flexer\CreateBuilderRequestHandler;
 
 use Flexer\Builder;
 
-final readonly class BuilderAddRequest
+final readonly class MapRequest
 {
 	private BuilderAddRequestType $type;
 
@@ -20,8 +20,8 @@ final readonly class BuilderAddRequest
     public static function create(
         string $idOrCollection,
         mixed $definition = null,
-    ): BuilderAddRequest {
-        return new BuilderAddRequest($idOrCollection, $definition);
+    ): MapRequest {
+        return new MapRequest($idOrCollection, $definition);
     }
 
     private function setTypeForIndividualBuilder(): void

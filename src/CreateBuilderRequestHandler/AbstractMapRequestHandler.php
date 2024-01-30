@@ -7,7 +7,7 @@ namespace Flexer\CreateBuilderRequestHandler;
 use Flexer\Builder;
 use Flexer\Exception\BuildAddHandlerException;
 
-abstract class AbstractICreateBuilder implements ICreateBuilder
+abstract class AbstractMapRequestHandler implements ICreateBuilder
 {
     protected ICreateBuilder $next;
 
@@ -23,7 +23,7 @@ abstract class AbstractICreateBuilder implements ICreateBuilder
 	/**
 	 * @throws BuildAddHandlerException
 	 */
-	public function handle(BuilderAddRequest $request): Builder
+	public function handle(MapRequest $request): Builder
 	{
 		if (!isset($this->next)) {
 			throw new BuildAddHandlerException(

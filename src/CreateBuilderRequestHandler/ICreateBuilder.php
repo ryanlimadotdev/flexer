@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Flexer\BuilderMapRequestHandler;
+namespace Flexer\CreateBuilderRequestHandler;
 
 use Flexer\Builder;
 
-interface BuilderMapHandler
+interface ICreateBuilder
 {
-    public function handle(BuilderAddRequest $request): Builder;
-    public function setNext(BuilderMapHandler $next): BuilderMapHandler;
+    public function handle(MapRequest $request): Builder;
+    public function setNext(ICreateBuilder $next): ICreateBuilder;
 }

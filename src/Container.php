@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Flexer;
 
-use Flexer\BuilderMapRequestHandler\BuilderAddRequest;
-use Flexer\BuilderMapRequestHandler\BuilderMapHandler;
-use Flexer\BuilderMapRequestHandler\BuilderMapRequestHandler;
-use Flexer\BuilderMapRequestHandler\CallableMapRequestHandler;
-use Flexer\BuilderMapRequestHandler\FunctionNameMapRequestHandler;
-use Flexer\BuilderMapRequestHandler\InstanceMapRequestHandler;
-use Flexer\BuilderMapRequestHandler\MethodCallArrayMapRequestHandler;
+use Flexer\CreateBuilderRequestHandler\MapRequest;
+use Flexer\CreateBuilderRequestHandler\ICreateBuilder;
+use Flexer\CreateBuilderRequestHandler\BuilderMapRequestHandler;
+use Flexer\CreateBuilderRequestHandler\CallableMapRequestHandler;
+use Flexer\CreateBuilderRequestHandler\FunctionNameMapRequestHandler;
+use Flexer\CreateBuilderRequestHandler\InstanceMapRequestHandler;
+use Flexer\CreateBuilderRequestHandler\MethodCallArrayMapRequestHandler;
 use Flexer\Exception\BuilderContainerException;
 use Flexer\Exception\ContainerException as E;
 use Flexer\Exception\NotFoundException;
@@ -33,7 +33,7 @@ class Container implements ContainerInterface
 
 	/** @var array<bool> $modes */
 	private array $modes = [];
-	private BuilderMapHandler $addRequestHandler;
+	private ICreateBuilder $addRequestHandler;
 	private BuildersContainer $definitions;
 
 	/**
@@ -96,7 +96,7 @@ class Container implements ContainerInterface
 	 */
 	public function addRequest(string $id, mixed $definition): void
 	{
-		$newBuilder = $this->addRequestHandler->handle(BuilderAddRequest::create($id, $definition));
+		$newBuilder = $this->addRequestHandler->handle(MapRequest::create($id, $definition));
 		if ($this->modes[self::SHARED_INSTANCES] ??= false) {
 			$newBuilder->singleton(true);
 		}
