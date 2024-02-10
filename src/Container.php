@@ -158,6 +158,9 @@ class Container implements ContainerInterface
 	 * Returns an instance of the specified class **$id** or throw an
 	 * NotFoundException.
 	 *
+	 * @template T
+	 * @param class-string<T> $id
+	 * @return T
 	 * @throws ReflectionException
 	 * @throws NotFoundException
 	 */
