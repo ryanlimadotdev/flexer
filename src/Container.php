@@ -30,6 +30,7 @@ class Container implements ContainerInterface
 {
 	public final const STRICT_MODE = 0;
 	public final const SHARED_INSTANCES = 1;
+	private static Container $instance;
 
 	/** @var array<bool> $modes */
 	private array $modes = [];
@@ -45,10 +46,17 @@ class Container implements ContainerInterface
 		array $builders = [],
 	) {
 
+		self::$instance = $this;
+
 		$this->handlersSetUp();
 		$this->definitions = new BuildersContainer();
 
 		$this->add($builders);
+	}
+
+	public static function locate(): static
+	{
+		return self::$instance;
 	}
 
 	private function handlersSetUp(): void
