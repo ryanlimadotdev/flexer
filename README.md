@@ -16,7 +16,7 @@ Similar to what is done with PHP-DI
 ## Installation
 Install Flexer with Composer:
 ```shell
-composer require ryanl/flexer:dev-main
+composer require ryanl/flexer
 ```
 ---
 ## Usage
