@@ -12,7 +12,7 @@ use IteratorAggregate;
 
 class BuildersContainer implements IteratorAggregate, ArrayAccess
 {
-    /** @var $content array<string, Builder> */
+    /** @var array<string, Builder> $content */
     private array $content = [];
 
 	/**
@@ -22,7 +22,7 @@ class BuildersContainer implements IteratorAggregate, ArrayAccess
     public static function fromArray(array $collection): self
     {
         $builderContainer = new self();
-        /** @var $id string */
+        /** @var string $id */
         foreach ($collection as $id => $callable) {
             if (!is_string($id)) {
                 throw new E(E::TRYING_TO_USE_A_NON_STRING_AS_OFFSET, E::TRYING_TO_USE_A_NON_STRING_AS_OFFSET_CODE);

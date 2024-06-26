@@ -5,10 +5,16 @@ declare(strict_types=1);
 namespace Flexer\CreateBuilderRequestHandler;
 
 use Flexer\Builder;
+use Flexer\Exception\BuildAddHandlerException;
+use Flexer\Exception\BuilderException;
 
 class CallableMapRequestHandler extends AbstractMapRequestHandler
 {
-    public function handle(MapRequest $request): Builder
+	/**
+	 * @throws BuilderException
+	 * @throws BuildAddHandlerException
+	 */
+	public function handle(MapRequest $request): Builder
     {
         if (!$request->isTypeCallable()) {
             return parent::handle($request);

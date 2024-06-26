@@ -30,7 +30,8 @@ class Container implements ContainerInterface
 {
 	public final const STRICT_MODE = 0;
 	public final const SHARED_INSTANCES = 1;
-	private static Container $instance;
+	/** @var static  */
+	private static ContainerInterface $instance;
 
 	/** @var array<bool> $modes */
 	private array $modes = [];
@@ -54,16 +55,16 @@ class Container implements ContainerInterface
 		$this->add($builders);
 	}
 
-	public static function locate(): static
+	public static function locate(): ContainerInterface
 	{
 		return self::$instance;
 	}
 
 	private function handlersSetUp(): void
 	{
-		$addHandler = FunctionNameMapRequestHandler::create();
+		$addHandler = CallableMapRequestHandler::create();
 		$addHandler->setNext(BuilderMapRequestHandler::create())
-			->setNext(CallableMapRequestHandler::create())
+			->setNext(FunctionNameMapRequestHandler::create())
 			->setNext(MethodCallArrayMapRequestHandler::create())
 			->setNext(InstanceMapRequestHandler::create());
 
@@ -116,7 +117,6 @@ class Container implements ContainerInterface
 		$this->modes[$mode] = $status;
 		return $this;
 	}
-
 
 	/**
 	 * {@inheritdoc}

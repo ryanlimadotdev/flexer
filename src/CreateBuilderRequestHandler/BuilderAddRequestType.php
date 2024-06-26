@@ -7,7 +7,6 @@ namespace Flexer\CreateBuilderRequestHandler;
 enum BuilderAddRequestType
 {
     case MethodCallArray;
-
     case Builder;
     case Instance;
     case FunctionName;
