@@ -2,10 +2,8 @@
 
 declare(strict_types=1);
 
-use Examples\EmptyClass;
-use Examples\NormalClass;
-
-require_once __DIR__ . '/Examples.php';
+use Test\Sample\EmptyClass;
+use Test\Sample\NormalClass;
 
 function currentLine(): int
 {
